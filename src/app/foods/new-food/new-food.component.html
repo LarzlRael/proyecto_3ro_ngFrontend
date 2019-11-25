@@ -1,0 +1,71 @@
+<div class="row p-4">
+    <div class="col-md-5 mx-auto">
+        <div class="card">
+            <div class="card-header text-center">
+                NUEVO PLATO &nbsp;<i class="fas fa-pizza-slice fa-lg"></i>
+            </div>
+            <div class="card-body">
+                <form #formFoods='ngForm'>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre de Plato" autofocus
+                            [(ngModel)]="food.nombre" name="nombre" #nombre='ngModel' required minlength="5">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Precio del Plato"
+                            [(ngModel)]="food.precio" name="precio" #precio='ngModel' required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Cantidad" [(ngModel)]="food.cantidad"
+                            name="cantidad" #cantidad='ngModel' required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="url" class="form-control" placeholder="Imagen" [(ngModel)]="food.url" name="url"
+                            #url='ngModel' required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Descripcion" [(ngModel)]="food.descripcion"
+                            name="Cantidad">
+                    </div>
+
+                    <button (click)="edit ? updatePlato() : newPlato()" class="btn btn-block btn-info"
+                        [disabled]="!formFoods.form.valid">
+                        {{edit ? 'Editar Datos': 'Registrar'}}
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- validation messages -->
+        <br>
+        <div class="alert alert-warning" *ngIf="!nombre.valid && nombre.touched">
+            Te falto llenar el campo nombre
+        </div>
+        <div class="alert alert-warning" *ngIf="!precio.valid && precio.touched">
+            Debes poner el precio del plato
+        </div>
+        <div class="alert alert-warning" *ngIf="!cantidad.valid && cantidad.touched">
+            La cantidad no puede ir vacia
+        </div>
+        <div class="alert alert-warning" *ngIf="!url.valid && url.touched">
+            Ingresa una url
+        </div>
+    </div>
+
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header text-uppercase text-center">
+                <h3>{{food.nombre == '' ? 'Nombre de plato' : food.nombre}}</h3>
+            </div>
+            <div class="card-body">
+
+                <img [src]="food.url == '' ? '/assets/noimage.png' : food.url" class="card-img-top" alt=""><br><br>
+                <p class="">
+                    Descripcion : {{food.descripcion == '' ? 'Sin descripcion' : food.descripcion}}</p>
+            </div>
+            <div class="card-footer">
+                <p>PRECIO : {{food.precio == '' ? '' : food.precio}}</p>
+            </div>
+        </div>
+    </div>
+</div>

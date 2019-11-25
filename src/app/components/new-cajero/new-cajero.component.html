@@ -1,0 +1,73 @@
+<div class="row p-4">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header text-center">
+                NUEVO CAJERO &nbsp;<i class="fas fa-plus-circle"></i>
+            </div>
+            <div class="card-body">
+                <form #formCajero='ngForm'>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre de Cajero" [(ngModel)]="caj.nombre"
+                            name="nombre" autofocus #nombre="ngModel" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Apellido de Cajero"
+                            [(ngModel)]="caj.apellido" name="apellido"
+                            #apellido="ngModel"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Direccion" [(ngModel)]="caj.direccion"
+                            name="direccion">
+                    </div>
+                    <!-- img  -->
+                    <div class="form-group">
+                        <input type="url" class="form-control" placeholder="Foto" [(ngModel)]="caj.image" name="image" #image="ngModel"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Horario</label>
+                        <select class="form-control" [(ngModel)]="caj.rol" name="rol">
+                            <option>Mañana</option>
+                            <option>Tarde</option>
+                            <option>Noche</option>
+                        </select>
+
+                    </div>
+                    <button type="submit" (click)="edit ? actualizarCajero() : newCajero()"
+                        [disabled]='!formCajero.form.valid' class="btn btn-block btn-info">
+                        {{edit ? 'Editar Datos': 'Registrar'}}
+                    </button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="alert alert-danger" *ngIf="!nombre.valid &&nombre.touched">
+            <p>Debes llenar el campo nombre</p>
+        </div>
+        <div class="alert alert-danger" *ngIf="!apellido.valid &&apellido.touched">
+            <p>Debes llenar el campo apellido</p>
+        </div>
+        <div class="alert alert-danger" *ngIf="!image.valid && image.touched">
+            <p>Te falto poner la foto</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header text-center text-capitalize">
+                {{caj.nombre == '' ? 'NOMBRE' : caj.nombre}}
+            </div>
+            <div class="card-body">
+                <img [src]="caj.image == '' ? '/assets/profile.jpg' : caj.image" class="card-img-top" alt="">
+            </div>
+            <div class="card-footer text-center">
+                <p class="text-left">DIRECCION : {{caj.direccion}}</p>
+                <hr>
+                HORARIO : {{caj.rol}}
+            </div>
+
+        </div>
+    </div>
+</div>

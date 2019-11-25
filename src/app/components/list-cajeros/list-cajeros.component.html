@@ -1,0 +1,64 @@
+<br><br>
+<h3>Lista de Cajeros &nbsp;<i class="fas fa-users"></i></h3>
+<br>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <tr>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>DIRECCION</th>
+                <th>ROL</th>
+                <th>ESTADO</th>
+                <th>ACCION</th>
+            </tr>
+            <tr *ngFor="let cajero of cajeros" class="text-capitalize">
+                <td>{{cajero.nombre}}</td>
+                <td>{{cajero.apellido}}</td>
+                <td>{{cajero.direccion}}</td>
+                <td>{{cajero.rol}}</td>
+                <td *ngIf="!cajero.activo">
+                    <button class="btn btn-secondary" (click)="enableUser(cajero.id_cajero)"><i
+                            class="fas fa-times"></i></button>
+                </td>
+                <td *ngIf="cajero.activo " (click)="disableUser(cajero.id_cajero)">
+                    <button class="btn btn-success"><i class="fas fa-check-circle"></i></button></td>
+                <td>
+                    <button class="btn btn-info" (click)="editar(cajero.id_cajero)"><i
+                            class="fas fa-edit"></i>&nbsp;Editar</button>
+                    &nbsp;
+                    <button routerLink="/cajeros" (click)="eliminarCajero(cajero.id_cajero)" class="btn btn-danger"><i
+                            class="fas fa-trash-alt"></i>&nbsp;Eliminar</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4 col-sm-12">
+
+        <h4>Cajeros Habilitados</h4>
+
+
+        <div class="row">
+            <div class="col-md-6 p-2" *ngFor="let enU of EnabledUsers">
+
+                <div class="card">
+                    <div class="card-header text-center text-capitalize">
+                        <a routerLink="/new_cajero/{{enU.id_cajero}}">
+                            <b>{{enU.nombre}}</b>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <img [src]="enU.image" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-footer">
+                        Horario : {{enU.rol}}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

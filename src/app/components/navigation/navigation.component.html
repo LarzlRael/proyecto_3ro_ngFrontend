@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">
+            <img  class="logo" src="/assets/burger.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/">
+                        <i class="fas fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <!-- Drop Down cjeros -->
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-edit"></i> &nbsp;Cajeros
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" routerLink="/cajeros">
+                            <i class="fas fa-list"></i> &nbsp; Lista de Cajeros</a>
+                        <a class="dropdown-item" routerLink="new_cajero">
+                            <i class="fas fa-plus-circle"></i>&nbsp;Añadir Nuevo Cajero</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+                <!-- end drop down cajero -->
+
+                &nbsp;
+                <!-- Drop Down foods -->
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-utensils"></i> &nbsp;Platos
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" routerLink="/foods">
+                            <i class="fas fa-list"></i> &nbsp; Lista de Platos</a>
+                        <a class="dropdown-item" routerLink="/new_food">
+                            <i class="fas fa-hamburger"></i>&nbsp;Añadir Nuevo Plato</a>
+                    </div>
+                </div>
+                <!-- end drop down foods-->
+            </ul>
+        </div>
+    </div>
+</nav>
