@@ -40,10 +40,10 @@ export class ListFoodsComponent implements OnInit {
       },
       err => {
         this.toster.error('Plato eliminado','',{
-          positionClass:''
+          positionClass:'toast-bottom-right'
         }),
           console.log(err),
-          this.getPlatos()
+          this.getPlatos();
       }
     );
   }
